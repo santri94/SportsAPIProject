@@ -23,6 +23,13 @@ namespace SportsApiApp
         public MainWindow()
         {
             InitializeComponent();
+            SetUpConnection.SetUp();
+            Next();
+        }
+
+        public async void Next()
+        {
+            await LoadTeams.GetAllTeamsAsync();
         }
     }
 }

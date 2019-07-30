@@ -1,0 +1,23 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SportsApiApp
+{
+    public static class LoadTeams
+    {
+        public static async Task GetAllTeamsAsync()
+        {
+            string team = "Arsenal";
+            string action = "searchteams.php?t=";
+            string url = SetUpConnection.httpClient.BaseAddress.AbsoluteUri+action+team;
+            string rawJSON = await SetUpConnection.httpClient.GetStringAsync(url);
+
+            TeamsList teamsList = JsonConvert.DeserializeObject<TeamsList>(rawJSON);
+            Console.WriteLine(teamsList.Teams.Count);
+        }
+    }
+}

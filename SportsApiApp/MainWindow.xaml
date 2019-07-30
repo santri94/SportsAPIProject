@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SportsApiApp"
         mc:Ignorable="d"
-        Title="Sports App" Height="450" Width="800">
-    <Grid>
-        
+        Title="Sports App" Height="850" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="Grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="760" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
     </Grid>
 </Window>

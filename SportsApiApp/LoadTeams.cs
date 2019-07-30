@@ -9,6 +9,7 @@ namespace SportsApiApp
 {
     public static class LoadTeams
     {
+        public static TeamsList allTeams;
         public static async Task GetAllTeamsAsync()
         {
             string team = "Arsenal";
@@ -17,7 +18,8 @@ namespace SportsApiApp
             string rawJSON = await SetUpConnection.httpClient.GetStringAsync(url);
 
             TeamsList teamsList = JsonConvert.DeserializeObject<TeamsList>(rawJSON);
-            Console.WriteLine(teamsList.Teams.Count);
+            allTeams = teamsList;
+            Console.WriteLine(allTeams.Teams.Count);
         }
     }
 }

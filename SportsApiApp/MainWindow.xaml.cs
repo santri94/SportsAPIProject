@@ -30,6 +30,32 @@ namespace SportsApiApp
         public async void Next()
         {
             await LoadTeams.GetAllTeamsAsync();
+            DisplayData();
+        }
+
+        public void DisplayData()
+        {
+            int row = 1; // leaving space for title
+            int col = 1; // center column
+            foreach (var item in LoadTeams.allTeams.Teams)
+            {
+                RowDefinition x = new RowDefinition();
+                Grid.RowDefinitions.Add(x);
+                x.Height = new GridLength(200);
+
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Image     
+                //-------------------------------------------------------------------------------------------------------
+                Image image = new Image();
+                image.Source = new BitmapImage(new Uri(item.strTeamBadge));
+                image.Height = 130;
+                image.Width = 130;
+                Grid.SetRow(image, row);
+                Grid.SetColumn(image, col);
+                Grid.Children.Add(image);
+                row++;
+                //-------------------------------------------------------------------------------------------------------
+            }
         }
     }
 }

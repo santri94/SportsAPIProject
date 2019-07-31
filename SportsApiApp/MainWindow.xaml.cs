@@ -37,16 +37,59 @@ namespace SportsApiApp
         public void DisplayData()
         {
             int row = 0; // leaving space for title
-            int col = 1; // center column
+            int teamCol = 1;
+            int imgCol = 2; // center column
+            int jerseyCol = 3;
+            int siteCol = 4;
             foreach (var item in LoadTeams.allTeams.Teams)
             {
                 if (item.strTeamBadge == null)
                 {
-                    continue;
+                    item.strTeamBadge = "C:\\Sports Project API\\SportsApiApp\\null.png";
+                }
+                if (item.strTeamJersey == null)
+                {
+                    item.strTeamJersey = "C:\\Sports Project API\\SportsApiApp\\null.png";
+                }
+                if (item.strWebsite == null)
+                {
+                    item.strWebsite = "None";
                 }
                 RowDefinition x = new RowDefinition();
                 Grid.RowDefinitions.Add(x);
                 x.Height = new GridLength(200);
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Name
+                //-------------------------------------------------------------------------------------------------------
+                TextBlock info = new TextBlock();
+                info.Text = item.strTeam;
+                info.FontSize = 20;
+                info.VerticalAlignment = VerticalAlignment.Center;
+                info.HorizontalAlignment = HorizontalAlignment.Left;
+                info.Foreground = System.Windows.Media.Brushes.OrangeRed;
+                info.FontWeight = System.Windows.FontWeights.Bold;
+                info.FontStyle = System.Windows.FontStyles.Italic;
+
+                Grid.SetRow(info, row);
+                Grid.SetColumn(info, teamCol);
+                Grid.Children.Add(info);
+                //-------------------------------------------------------------------------------------------------------
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Name
+                //-------------------------------------------------------------------------------------------------------
+                TextBlock site = new TextBlock();
+                site.Text = item.strWebsite;
+                site.FontSize = 20;
+                site.VerticalAlignment = VerticalAlignment.Center;
+                site.HorizontalAlignment = HorizontalAlignment.Left;
+                site.Foreground = System.Windows.Media.Brushes.OrangeRed;
+                site.FontWeight = System.Windows.FontWeights.Bold;
+                site.FontStyle = System.Windows.FontStyles.Italic;
+
+                Grid.SetRow(site, row);
+                Grid.SetColumn(site, siteCol);
+                Grid.Children.Add(site);
+                //-------------------------------------------------------------------------------------------------------
 
                 //-------------------------------------------------------------------------------------------------------
                 //                                      Adding Image     
@@ -56,8 +99,19 @@ namespace SportsApiApp
                 image.Height = 130;
                 image.Width = 130;
                 Grid.SetRow(image, row);
-                Grid.SetColumn(image, col);
+                Grid.SetColumn(image, imgCol);
                 Grid.Children.Add(image);
+                //-------------------------------------------------------------------------------------------------------
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Image     
+                //-------------------------------------------------------------------------------------------------------
+                Image jersey = new Image();
+                jersey.Source = new BitmapImage(new Uri(item.strTeamJersey));
+                jersey.Height = 130;
+                jersey.Width = 130;
+                Grid.SetRow(jersey, row);
+                Grid.SetColumn(jersey, jerseyCol);
+                Grid.Children.Add(jersey);
                 row++;
                 //-------------------------------------------------------------------------------------------------------
             }

@@ -39,6 +39,10 @@ namespace SportsApiApp
             int col = 1; // center column
             foreach (var item in LoadTeams.allTeams.Teams)
             {
+                if (item.strTeamBadge == null)
+                {
+                    continue;
+                }
                 RowDefinition x = new RowDefinition();
                 Grid.RowDefinitions.Add(x);
                 x.Height = new GridLength(200);

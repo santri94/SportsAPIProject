@@ -12,7 +12,7 @@ namespace SportsApiApp
         public static TeamsList allTeams;
         public static async Task GetAllTeamsAsync()
         {
-            string team = "Arsenal";
+            string team = "borussia";
             string action = "searchteams.php?t=";
             string url = SetUpConnection.httpClient.BaseAddress.AbsoluteUri+action+team;
             string rawJSON = await SetUpConnection.httpClient.GetStringAsync(url);

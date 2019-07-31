@@ -24,18 +24,18 @@ namespace SportsApiApp
         {
             InitializeComponent();
             SetUpConnection.SetUp();
-            Next();
+            //Next();
         }
 
         public async void Next()
         {
-            await LoadTeams.GetAllTeamsAsync();
+            await LoadTeams.GetAllTeamsAsync(Team.Text);
             DisplayData();
         }
 
         public void DisplayData()
         {
-            int row = 1; // leaving space for title
+            int row = 0; // leaving space for title
             int col = 1; // center column
             foreach (var item in LoadTeams.allTeams.Teams)
             {
@@ -60,6 +60,54 @@ namespace SportsApiApp
                 row++;
                 //-------------------------------------------------------------------------------------------------------
             }
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            EmptyGrid();
+            //------------------------------------------------------------------------------------------------------------
+            //                                      Checking To See if Search Bar is empty
+            //                                          If so, don't send the request
+            //------------------------------------------------------------------------------------------------------------
+            if (Team.Text == "")
+            {
+                // Don't Do anything
+            }
+            else
+            {
+                //EmptyGrid();
+                await LoadTeams.GetAllTeamsAsync(Team.Text);
+                if (LoadTeams.allTeams.Teams == null)
+                {
+                    MessageBox.Show("Team Does not Exist on API");
+                }
+                else
+                {
+                    DisplayData();
+                }
+            }
+            //------------------------------------------------------------------------------------------------------------
+        }
+
+        public void EmptyGrid()
+        {
+            var numberOfChildren = Grid.Children.Count;
+            var numberOfRows = Grid.RowDefinitions.Count;
+            //-----------------------------------------------------------------------------------------------
+            //                                  Delete everything  from grid    
+            //-----------------------------------------------------------------------------------------------
+            if (numberOfRows == 0)
+            {
+                //Don't do Anything about to start creating Rows;
+            }
+            else
+            {
+                Grid.Children.RemoveRange(0, numberOfChildren);
+                Grid.RowDefinitions.RemoveRange(0, numberOfRows);
+
+            }
+
+            //-----------------------------------------------------------------------------------------------
         }
     }
 }

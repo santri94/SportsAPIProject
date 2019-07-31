@@ -43,15 +43,15 @@ namespace SportsApiApp
             int siteCol = 4;
             foreach (var item in LoadTeams.allTeams.Teams)
             {
-                if (item.strTeamBadge == null)
+                if (item.strTeamBadge == null || item.strTeamBadge == "")
                 {
                     item.strTeamBadge = "C:\\Sports Project API\\SportsApiApp\\null.png";
                 }
-                if (item.strTeamJersey == null)
+                if (item.strTeamJersey == null || item.strTeamJersey == "")
                 {
                     item.strTeamJersey = "C:\\Sports Project API\\SportsApiApp\\null.png";
                 }
-                if (item.strWebsite == null)
+                if (item.strWebsite == null || item.strWebsite == "")
                 {
                     item.strWebsite = "None";
                 }

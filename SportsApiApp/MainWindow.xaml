@@ -20,8 +20,8 @@
             </Grid.RowDefinitions>
 
             <TextBlock Foreground="DarkMagenta" FontWeight="Bold" FontSize="40" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="28,139,52,8">Team</TextBlock>
-            <TextBox x:Name="Team" Grid.Column="1" Grid.Row="2" Width="150" Height="40" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Lucida Bright"></TextBox>
-            <Button Grid.Column="1" Grid.Row="2" Width="100" Height="35" FontFamily="Lucida Bright" FontSize="20" Margin="28,45,52,116" Click="Button_Click" >Search</Button>
+            <TextBox x:Name="Team" Style="{StaticResource Textbox1}" Grid.Column="1" Grid.Row="2" Width="150" Height="40" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Lucida Bright"></TextBox>
+            <Button Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="2" Width="100" Height="35" FontFamily="Lucida Bright" FontSize="20" Margin="28,45,52,116" Click="Button_Click" >Search</Button>
         </Grid>
         <Grid x:Name="Grid" Margin="192,0,0,0">
             <Grid.ColumnDefinitions>

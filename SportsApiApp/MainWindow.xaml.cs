@@ -114,6 +114,7 @@ namespace SportsApiApp
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            RecentSearch.Text = Team.Text;
             string action = "searchteams.php?t=";
             EmptyGrid();
             //------------------------------------------------------------------------------------------------------------
@@ -137,6 +138,7 @@ namespace SportsApiApp
                     DisplayData();
                 }
             }
+            Team.Text = "";
             //------------------------------------------------------------------------------------------------------------
         }
 
@@ -163,6 +165,7 @@ namespace SportsApiApp
 
         private async void ShowPlayers_Click(object sender, RoutedEventArgs e)
         {
+            RecentSearch.Text = TeamPlayers.Text;
             string action = "searchplayers.php?t=";
             EmptyGrid();
             //------------------------------------------------------------------------------------------------------------
@@ -185,6 +188,7 @@ namespace SportsApiApp
                     DisplayPlayers();
                 }
             }
+            TeamPlayers.Text = "";
         }
 
         public void DisplayPlayers()

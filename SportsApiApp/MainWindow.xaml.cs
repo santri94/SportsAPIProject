@@ -202,7 +202,7 @@ namespace SportsApiApp
             }
             else
             {
-                await LoadPlayers.GetAllTeamsAsync(TeamPlayers.Text, action);
+                await LoadPlayers.GetAllPlayersAsync(TeamPlayers.Text, action);
                 if (LoadPlayers.allPlayers.Player == null)
                 {
                     MessageBox.Show("Team Does not Exist on API");
@@ -297,7 +297,7 @@ namespace SportsApiApp
             }
             else
             {
-                await LoadPlayers.GetAllTeamsAsync(PlayerName.Text, action);
+                await LoadPlayers.GetAllPlayersAsync(PlayerName.Text, action);
                 if (LoadPlayers.allPlayers.Player == null)
                 {
                     MessageBox.Show("Player Does not Exist on API");

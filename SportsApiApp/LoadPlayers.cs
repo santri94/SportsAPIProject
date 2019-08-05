@@ -11,7 +11,7 @@ namespace SportsApiApp
     {
         public static PlayersList allPlayers;
 
-        public static async Task GetAllTeamsAsync(string enteredTeam, string action)
+        public static async Task GetAllPlayersAsync(string enteredTeam, string action)
         {
             string team = enteredTeam;
             //string action = "searchteams.php?t=";

@@ -30,5 +30,23 @@ namespace Tests
             Assert.NotNull(LoadTeams.allTeams.Teams);
 
         }
+
+        //-----------------------------------------------------------------------------------
+        //                      When Passing action (searchplayers) and a team name WITH PLAYERS
+        //                          Our Player List SHOULD NOT BE NULL
+        //-----------------------------------------------------------------------------------
+        [Test]
+        public async Task GetAllPlayersAsyncNotNull()
+        {
+            string action = "searchplayers.php?t="; // Search teams with this name
+
+            string team = "Everton";
+
+            await LoadPlayers.GetAllPlayersAsync(team, action);
+
+            Assert.NotNull(LoadPlayers.allPlayers.Player);
+
+        }
+
     }
 }

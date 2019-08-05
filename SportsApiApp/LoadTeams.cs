@@ -10,10 +10,10 @@ namespace SportsApiApp
     public static class LoadTeams
     {
         public static TeamsList allTeams;
-        public static async Task GetAllTeamsAsync(string enteredTeam)
+        public static async Task GetAllTeamsAsync(string enteredTeam, string action)
         {
             string team = enteredTeam;
-            string action = "searchteams.php?t=";
+            //string action = "searchteams.php?t=";
             string url = SetUpConnection.httpClient.BaseAddress.AbsoluteUri+action+team;
             string rawJSON = await SetUpConnection.httpClient.GetStringAsync(url);
 

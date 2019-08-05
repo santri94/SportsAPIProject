@@ -25,14 +25,9 @@ namespace SportsApiApp
         {
             InitializeComponent();
             SetUpConnection.SetUp();
-            //Next();
+
         }
 
-        public async void Next()
-        {
-            await LoadTeams.GetAllTeamsAsync(Team.Text);
-            DisplayData();
-        }
 
         public void DisplayData()
         {
@@ -119,6 +114,7 @@ namespace SportsApiApp
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            string action = "searchteams.php?t=";
             EmptyGrid();
             //------------------------------------------------------------------------------------------------------------
             //                                      Checking To See if Search Bar is empty
@@ -131,7 +127,7 @@ namespace SportsApiApp
             else
             {
                 //EmptyGrid();
-                await LoadTeams.GetAllTeamsAsync(Team.Text);
+                await LoadTeams.GetAllTeamsAsync(Team.Text, action);
                 if (LoadTeams.allTeams.Teams == null)
                 {
                     MessageBox.Show("Team Does not Exist on API");

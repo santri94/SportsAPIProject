@@ -246,7 +246,7 @@ namespace SportsApiApp
                 info.FontSize = 25;
                 info.VerticalAlignment = VerticalAlignment.Center;
                 info.HorizontalAlignment = HorizontalAlignment.Left;
-                info.Foreground = System.Windows.Media.Brushes.PaleVioletRed;
+                info.Foreground = System.Windows.Media.Brushes.White;
                 info.FontWeight = System.Windows.FontWeights.Bold;
                 info.FontStyle = System.Windows.FontStyles.Italic;
 
@@ -254,24 +254,6 @@ namespace SportsApiApp
                 Grid.SetColumn(info, playerCol);
                 Grid.SetColumnSpan(info, 2);
                 Grid.Children.Add(info);
-                //-------------------------------------------------------------------------------------------------------
-                //-------------------------------------------------------------------------------------------------------
-                //                                      Adding Position
-                //-------------------------------------------------------------------------------------------------------
-                /*
-                TextBlock position = new TextBlock();
-                position.Text = item.strPosition;
-                position.FontSize = 20;
-                position.VerticalAlignment = VerticalAlignment.Center;
-                position.HorizontalAlignment = HorizontalAlignment.Left;
-                position.Foreground = System.Windows.Media.Brushes.White;
-                position.FontWeight = System.Windows.FontWeights.Bold;
-                position.FontStyle = System.Windows.FontStyles.Italic;
-
-                Grid.SetRow(position, row);
-                Grid.SetColumn(position, positionCol);
-                Grid.Children.Add(position);
-                */
                 //-------------------------------------------------------------------------------------------------------
 
                 //-------------------------------------------------------------------------------------------------------
@@ -371,25 +353,6 @@ namespace SportsApiApp
 
                 row++;
                 //-------------------------------------------------------------------------------------------------------
-                //-------------------------------------------------------------------------------------------------------
-                //                                      Adding Position
-                //-------------------------------------------------------------------------------------------------------
-                /*
-                TextBlock position = new TextBlock();
-                position.Text = item.strPosition;
-                position.FontSize = 20;
-                position.VerticalAlignment = VerticalAlignment.Center;
-                position.HorizontalAlignment = HorizontalAlignment.Left;
-                position.Foreground = System.Windows.Media.Brushes.White;
-                position.FontWeight = System.Windows.FontWeights.Bold;
-                position.FontStyle = System.Windows.FontStyles.Italic;
-
-                Grid.SetRow(position, row);
-                Grid.SetColumn(position, positionCol);
-                Grid.Children.Add(position);
-                */
-                //-------------------------------------------------------------------------------------------------------
-
                 //-------------------------------------------------------------------------------------------------------
                 //                                      Adding Image     
                 //-------------------------------------------------------------------------------------------------------

@@ -290,5 +290,144 @@ namespace SportsApiApp
             }
 
         }
+
+        private async void SearchPlayerByName_Click(object sender, RoutedEventArgs e)
+        {
+            string action = "searchplayers.php?p=";
+            RecentSearch.Text = PlayerName.Text;
+            if (RecentSearch.Text.Length > 12)
+            {
+                RecentSearch.FontSize = 17;
+            }
+            else
+            {
+                RecentSearch.FontSize = 25;
+            }
+
+            EmptyGrid();
+            //------------------------------------------------------------------------------------------------------------
+            //                                      Checking To See if Search Bar is empty
+            //                                          If so, don't send the request
+            //------------------------------------------------------------------------------------------------------------
+            if (PlayerName.Text == "")
+            {
+                // Don't Do anything
+            }
+            else
+            {
+                await LoadPlayers.GetAllTeamsAsync(PlayerName.Text, action);
+                if (LoadPlayers.allPlayers.Player == null)
+                {
+                    MessageBox.Show("Player Does not Exist on API");
+                }
+                else
+                {
+                    DisplayOnePlayer();
+                }
+            }
+            PlayerName.Text = "";
+        }
+
+        public void DisplayOnePlayer()
+        {
+            int row = 0; // leaving space for title
+            int nameCol = 1;
+            int imgCol = 1;
+            int moreInfoCol = 3;
+            int descriptionCol = 4;
+
+            foreach (var item in LoadPlayers.allPlayers.Player)
+            {
+
+                if (item.strThumb == null || item.strThumb == "")
+                {
+                    item.strThumb = "C:\\Sports Project API\\SportsApiApp\\null.png"; // default img 
+                }
+                if (item.strPosition == null || item.strPosition == "")
+                {
+                    item.strPosition = "None";
+                }
+
+                RowDefinition x = new RowDefinition();
+                Grid.RowDefinitions.Add(x);
+                x.Height = new GridLength(100);
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Name
+                //-------------------------------------------------------------------------------------------------------
+                string playerInfo = item.strPlayer;
+                TextBlock info = new TextBlock();
+                info.Text = playerInfo;
+                info.FontSize = 50;
+                info.VerticalAlignment = VerticalAlignment.Center;
+                info.HorizontalAlignment = HorizontalAlignment.Center;
+                info.Foreground = System.Windows.Media.Brushes.PaleVioletRed;
+                info.FontWeight = System.Windows.FontWeights.Bold;
+                info.FontStyle = System.Windows.FontStyles.Italic;
+
+                Grid.SetRow(info, row);
+                Grid.SetColumn(info, nameCol);
+                Grid.SetColumnSpan(info, 4);
+                Grid.Children.Add(info);
+
+                row++;
+                //-------------------------------------------------------------------------------------------------------
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Position
+                //-------------------------------------------------------------------------------------------------------
+                /*
+                TextBlock position = new TextBlock();
+                position.Text = item.strPosition;
+                position.FontSize = 20;
+                position.VerticalAlignment = VerticalAlignment.Center;
+                position.HorizontalAlignment = HorizontalAlignment.Left;
+                position.Foreground = System.Windows.Media.Brushes.White;
+                position.FontWeight = System.Windows.FontWeights.Bold;
+                position.FontStyle = System.Windows.FontStyles.Italic;
+
+                Grid.SetRow(position, row);
+                Grid.SetColumn(position, positionCol);
+                Grid.Children.Add(position);
+                */
+                //-------------------------------------------------------------------------------------------------------
+
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Image     
+                //-------------------------------------------------------------------------------------------------------
+                RowDefinition y = new RowDefinition();
+                Grid.RowDefinitions.Add(y);
+                y.Height = new GridLength(200);
+
+                Image image = new Image();
+                image.Source = new BitmapImage(new Uri(item.strThumb));
+                image.Height = 180;
+                image.Width = 250;
+                Grid.SetRow(image, row);
+                Grid.SetColumn(image, imgCol);
+                Grid.SetColumnSpan(image, 2);
+                Grid.Children.Add(image);
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding More Info
+                //-------------------------------------------------------------------------------------------------------
+                
+                TextBlock moreInfo = new TextBlock();
+                moreInfo.Text = $"Sport: {item.strSport}\n- {item.strTeam}\n- {item.strPosition}\n- {item.dateBorn}\n- height: {item.strHeight}\n- Nationality: {item.strNationality}";
+                moreInfo.FontSize = 20;
+                moreInfo.VerticalAlignment = VerticalAlignment.Center;
+                moreInfo.HorizontalAlignment = HorizontalAlignment.Left;
+                moreInfo.Foreground = System.Windows.Media.Brushes.White;
+                moreInfo.FontWeight = System.Windows.FontWeights.Bold;
+                moreInfo.FontStyle = System.Windows.FontStyles.Italic;
+
+                Grid.SetRow(moreInfo, row);
+                Grid.SetColumn(moreInfo, moreInfoCol);
+                Grid.SetColumnSpan(moreInfo, 2);
+                Grid.Children.Add(moreInfo);
+                //-------------------------------------------------------------------------------------------------------
+
+                //-------------------------------------------------------------------------------------------------------
+                row++;
+
+            }
+        }
     }
 }

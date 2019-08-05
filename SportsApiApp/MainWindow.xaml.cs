@@ -189,7 +189,78 @@ namespace SportsApiApp
 
         public void DisplayPlayers()
         {
-            throw new NotImplementedException();
+            int row = 0; // leaving space for title
+            int playerCol = 1;
+            int playerImgCol = 3; // center column
+            int positionCol = 4;
+
+            foreach (var item in LoadPlayers.allPlayers.Player)
+            {
+
+                if (item.strThumb == null || item.strThumb == "")
+                {
+                    item.strThumb = "C:\\Sports Project API\\SportsApiApp\\null.png"; // default img 
+                }
+                if (item.strPosition == null || item.strPosition == "")
+                {
+                    item.strPosition = "None";
+                }
+
+                RowDefinition x = new RowDefinition();
+                Grid.RowDefinitions.Add(x);
+                x.Height = new GridLength(200);
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Name
+                //-------------------------------------------------------------------------------------------------------
+                string namePosition = $"{item.strPlayer}\n  ({item.strPosition})";
+                TextBlock info = new TextBlock();
+                info.Text = namePosition;
+                info.FontSize = 25;
+                info.VerticalAlignment = VerticalAlignment.Center;
+                info.HorizontalAlignment = HorizontalAlignment.Center;
+                info.Foreground = System.Windows.Media.Brushes.PaleVioletRed;
+                info.FontWeight = System.Windows.FontWeights.Bold;
+                info.FontStyle = System.Windows.FontStyles.Italic;
+
+                Grid.SetRow(info, row);
+                Grid.SetColumn(info, playerCol);
+                Grid.SetColumnSpan(info, 2);
+                Grid.Children.Add(info);
+                //-------------------------------------------------------------------------------------------------------
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Position
+                //-------------------------------------------------------------------------------------------------------
+                /*
+                TextBlock position = new TextBlock();
+                position.Text = item.strPosition;
+                position.FontSize = 20;
+                position.VerticalAlignment = VerticalAlignment.Center;
+                position.HorizontalAlignment = HorizontalAlignment.Left;
+                position.Foreground = System.Windows.Media.Brushes.White;
+                position.FontWeight = System.Windows.FontWeights.Bold;
+                position.FontStyle = System.Windows.FontStyles.Italic;
+
+                Grid.SetRow(position, row);
+                Grid.SetColumn(position, positionCol);
+                Grid.Children.Add(position);
+                */
+                //-------------------------------------------------------------------------------------------------------
+
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Image     
+                //-------------------------------------------------------------------------------------------------------
+                Image image = new Image();
+                image.Source = new BitmapImage(new Uri(item.strThumb));
+                image.Height = 180;
+                image.Width = 250;
+                Grid.SetRow(image, row);
+                Grid.SetColumn(image, playerImgCol);
+                Grid.SetColumnSpan(image, 2);
+                Grid.Children.Add(image);
+                //-------------------------------------------------------------------------------------------------------
+                row++;
+            }
+
         }
     }
 }

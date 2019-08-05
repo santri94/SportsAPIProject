@@ -58,7 +58,15 @@ namespace SportsApiApp
                 //-------------------------------------------------------------------------------------------------------
                 TextBlock info = new TextBlock();
                 info.Text = item.strTeam;
-                info.FontSize = 25;
+                if (item.strTeam.Length > 12)
+                {
+                    info.FontSize = 17;
+                }
+                else
+                {
+
+                    info.FontSize = 25;
+                }
                 info.VerticalAlignment = VerticalAlignment.Center;
                 info.HorizontalAlignment = HorizontalAlignment.Left;
                 info.Foreground = System.Windows.Media.Brushes.PaleVioletRed;
@@ -115,6 +123,14 @@ namespace SportsApiApp
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             RecentSearch.Text = Team.Text;
+            if (RecentSearch.Text.Length > 12)
+            {
+                RecentSearch.FontSize = 17;
+            }
+            else
+            {
+                RecentSearch.FontSize = 25;
+            }
             string action = "searchteams.php?t=";
             EmptyGrid();
             //------------------------------------------------------------------------------------------------------------
@@ -166,6 +182,14 @@ namespace SportsApiApp
         private async void ShowPlayers_Click(object sender, RoutedEventArgs e)
         {
             RecentSearch.Text = TeamPlayers.Text;
+            if (RecentSearch.Text.Length > 12)
+            {
+                RecentSearch.FontSize = 17;
+            }
+            else
+            {
+                RecentSearch.FontSize = 25;
+            }
             string action = "searchplayers.php?t=";
             EmptyGrid();
             //------------------------------------------------------------------------------------------------------------

@@ -5,7 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style x:Key="RoundButton" TargetType="Button">
-            <Setter Property="Background" Value="DodgerBlue" />
+            <Setter Property="Background" Value="PaleVioletRed" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Template">
                 <Setter.Value>

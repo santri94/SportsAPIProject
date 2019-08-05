@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SportsApiApp"
         mc:Ignorable="d"
-        Title="Sports App" Height="850" Width="870" WindowStartupLocation="CenterScreen">
+        Title="Sports App" Height="850" Width="900" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="C:\Sports Project API\SportsApiApp\bg.jpg"/>
@@ -22,13 +22,16 @@
                 <RowDefinition Height="200" />
             </Grid.RowDefinitions>
 
-            <TextBlock Foreground="DarkMagenta" FontWeight="Bold" FontSize="40" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="28,139,52,8">Team</TextBlock>
+            <TextBlock Foreground="White" FontWeight="Bold" FontSize="40" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="28,139,52,8">Team</TextBlock>
             <TextBox x:Name="Team" Style="{StaticResource Textbox1}" Grid.Column="1" Grid.Row="2" Width="150" Height="40" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Lucida Bright"></TextBox>
             <Button Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="2" Width="100" Height="35" FontFamily="Lucida Bright" FontSize="20" Margin="28,45,52,116" Click="Button_Click" >Search</Button>
         </Grid>
         <Grid x:Name="Grid" Margin="192,0,0,0">
+            <Grid.Effect>
+                <DropShadowEffect/>
+            </Grid.Effect>
 
-                <Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20" />
                     <ColumnDefinition Width="150" />
                     <ColumnDefinition Width="150" />

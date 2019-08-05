@@ -63,10 +63,10 @@ namespace SportsApiApp
                 //-------------------------------------------------------------------------------------------------------
                 TextBlock info = new TextBlock();
                 info.Text = item.strTeam;
-                info.FontSize = 20;
+                info.FontSize = 25;
                 info.VerticalAlignment = VerticalAlignment.Center;
                 info.HorizontalAlignment = HorizontalAlignment.Left;
-                info.Foreground = System.Windows.Media.Brushes.OrangeRed;
+                info.Foreground = System.Windows.Media.Brushes.PaleVioletRed;
                 info.FontWeight = System.Windows.FontWeights.Bold;
                 info.FontStyle = System.Windows.FontStyles.Italic;
 
@@ -75,14 +75,14 @@ namespace SportsApiApp
                 Grid.Children.Add(info);
                 //-------------------------------------------------------------------------------------------------------
                 //-------------------------------------------------------------------------------------------------------
-                //                                      Adding Name
+                //                                      Adding Website
                 //-------------------------------------------------------------------------------------------------------
                 TextBlock site = new TextBlock();
                 site.Text = item.strWebsite;
                 site.FontSize = 20;
                 site.VerticalAlignment = VerticalAlignment.Center;
                 site.HorizontalAlignment = HorizontalAlignment.Left;
-                site.Foreground = System.Windows.Media.Brushes.OrangeRed;
+                site.Foreground = System.Windows.Media.Brushes.White;
                 site.FontWeight = System.Windows.FontWeights.Bold;
                 site.FontStyle = System.Windows.FontStyles.Italic;
 

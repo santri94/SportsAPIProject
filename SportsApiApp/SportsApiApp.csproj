@@ -61,7 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LoadPlayers.cs" />
     <Compile Include="LoadTeams.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayersList.cs" />
     <Compile Include="SetUpConnection.cs" />
     <Compile Include="Team.cs" />
     <Compile Include="TeamsList.cs" />

@@ -160,5 +160,36 @@ namespace SportsApiApp
 
             //-----------------------------------------------------------------------------------------------
         }
+
+        private async void ShowPlayers_Click(object sender, RoutedEventArgs e)
+        {
+            string action = "searchplayers.php?t=";
+            EmptyGrid();
+            //------------------------------------------------------------------------------------------------------------
+            //                                      Checking To See if Search Bar is empty
+            //                                          If so, don't send the request
+            //------------------------------------------------------------------------------------------------------------
+            if (TeamPlayers.Text == "")
+            {
+                // Don't Do anything
+            }
+            else
+            {
+                await LoadPlayers.GetAllTeamsAsync(TeamPlayers.Text, action);
+                if (LoadPlayers.allPlayers.Player == null)
+                {
+                    MessageBox.Show("Team Does not Exist on API");
+                }
+                else
+                {
+                    DisplayPlayers();
+                }
+            }
+        }
+
+        public void DisplayPlayers()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

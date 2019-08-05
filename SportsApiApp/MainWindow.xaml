@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SportsApiApp"
         mc:Ignorable="d"
-        Title="Sports App" Height="850" Width="900" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="C:\Sports Project API\SportsApiApp\bg.jpg"/>
-        </Grid.Background>
-        <Grid x:Name="Left" Margin="10,10,600,0">
+        Title="Sports App" Height="850" Width="950" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Sports Project API\SportsApiApp\bg.jpg"/>
+    </Window.Background>
+
+    <Grid Margin="199,0,0,0">
+        <Grid x:Name="Left" Margin="-196,0,0,10" HorizontalAlignment="Left" Width="282">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20" />
                 <ColumnDefinition Width="180" />
@@ -44,7 +45,8 @@
             <Button x:Name="ShowPlayers" Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="8" Width="100" Height="35" FontFamily="Lucida Bright" FontSize="20" Margin="29,6,52,10" Click="ShowPlayers_Click" >Show</Button>
 
         </Grid>
-        <Grid x:Name="Grid" Margin="192,0,0,0">
+        <ScrollViewer>
+        <Grid x:Name="Grid">
             <Grid.Effect>
                 <DropShadowEffect/>
             </Grid.Effect>
@@ -60,5 +62,7 @@
             </Grid.RowDefinitions>
 
         </Grid>
+        </ScrollViewer>
+
     </Grid>
 </Window>

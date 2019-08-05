@@ -212,12 +212,12 @@ namespace SportsApiApp
                 //-------------------------------------------------------------------------------------------------------
                 //                                      Adding Name
                 //-------------------------------------------------------------------------------------------------------
-                string namePosition = $"{item.strPlayer}\n  ({item.strPosition})";
+                string playerInfo = $"{item.strTeam}\n- {item.strPlayer}\n- ({item.strPosition})";
                 TextBlock info = new TextBlock();
-                info.Text = namePosition;
+                info.Text = playerInfo;
                 info.FontSize = 25;
                 info.VerticalAlignment = VerticalAlignment.Center;
-                info.HorizontalAlignment = HorizontalAlignment.Center;
+                info.HorizontalAlignment = HorizontalAlignment.Left;
                 info.Foreground = System.Windows.Media.Brushes.PaleVioletRed;
                 info.FontWeight = System.Windows.FontWeights.Bold;
                 info.FontStyle = System.Windows.FontStyles.Italic;

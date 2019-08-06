@@ -25,9 +25,9 @@ namespace Tests
 
             string team = "Colombia";
 
-            await LoadTeams.GetAllTeamsAsync(team, action);
+            TeamsList teams = await LoadTeams.GetAllTeamsAsync(team, action);
 
-            Assert.NotNull(LoadTeams.allTeams.Teams);
+            Assert.NotNull(teams.Teams);
 
         }
 

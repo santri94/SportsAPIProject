@@ -21,6 +21,7 @@ namespace SportsApiApp
     /// images : https://wallpaperplay.com/board/cool-soccer-wallpapers
     public partial class MainWindow : Window
     {
+        TeamsList teams = new TeamsList();
         public MainWindow()
         {
             InitializeComponent();
@@ -29,14 +30,15 @@ namespace SportsApiApp
         }
 
 
-        public void DisplayData()
+        public async void DisplayData()
         {
             int row = 0; // leaving space for title
             int teamCol = 1;
             int imgCol = 2; // center column
             int jerseyCol = 3;
             int siteCol = 4;
-            foreach (var item in LoadTeams.allTeams.Teams)
+            
+            foreach (var item in teams.Teams)
             {
                 if (item.strTeamBadge == null || item.strTeamBadge == "")
                 {
@@ -144,8 +146,8 @@ namespace SportsApiApp
             else
             {
                 //EmptyGrid();
-                await LoadTeams.GetAllTeamsAsync(Team.Text, action);
-                if (LoadTeams.allTeams.Teams == null)
+                teams = await LoadTeams.GetAllTeamsAsync(Team.Text, action);
+                if (teams.Teams == null)
                 {
                     MessageBox.Show("Team Does not Exist on API");
                 }

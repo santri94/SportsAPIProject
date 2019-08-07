@@ -294,7 +294,15 @@ namespace SportsApiApp
 
         void ShowPlayer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"Now Show player : {sender.ToString().Remove(0,32)}");
+            //MessageBox.Show($"Now Show player : {sender.ToString().Remove(0,32)}");
+            string playerName = sender.ToString().Remove(0, 32);
+            //playerName = sender.Content;
+
+            Player player = new Player();
+            player = players.Player.Where(x => x.strPlayer == playerName).ToList()[0];
+
+            PlayerInfo info = new PlayerInfo(player);
+            info.Show();
         }
 
         private async void SearchPlayerByName_Click(object sender, RoutedEventArgs e)

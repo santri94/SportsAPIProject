@@ -33,6 +33,12 @@ namespace SportsApiApp
         {
             PlayerName.Text = player.strPlayer;
             PlayerImage.Source = new BitmapImage(new Uri(player.strThumb));
+            Description.Text = player.strDescriptionEN;
+            if (player.strWage == null || player.strWage == "")
+            {
+                player.strWage = "Not Defined";
+            }
+            MoreInfo.Text = $"- {player.strTeam} (Team)\n- {player.strNationality} (Nationality)\n- {player.strPosition} (Position)\n- {player.strHeight} (Height)\n- {player.dateBorn}\n- {player.strWage} (Salary)";
         }
     }
 }

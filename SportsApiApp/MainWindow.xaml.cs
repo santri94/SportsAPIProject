@@ -243,11 +243,11 @@ namespace SportsApiApp
                 //-------------------------------------------------------------------------------------------------------
                 //                                      Adding Name
                 //-------------------------------------------------------------------------------------------------------
-                string playerInfo = $"{item.strTeam}\n- {item.strPlayer}\n- ({item.strPosition})";
+                string playerInfo = $"{item.strTeam}\n- {item.strPlayer}";
                 TextBlock info = new TextBlock();
                 info.Text = playerInfo;
                 info.FontSize = 25;
-                info.VerticalAlignment = VerticalAlignment.Center;
+                info.VerticalAlignment = VerticalAlignment.Top;
                 info.HorizontalAlignment = HorizontalAlignment.Left;
                 info.Foreground = System.Windows.Media.Brushes.White;
                 info.FontWeight = System.Windows.FontWeights.Bold;
@@ -263,14 +263,14 @@ namespace SportsApiApp
                 Button button = new Button();
                 button.Height = 30;
                 button.Width = 100;
-                button.VerticalAlignment = VerticalAlignment.Bottom;
-                button.HorizontalAlignment = HorizontalAlignment.Right;
+                button.VerticalAlignment = VerticalAlignment.Center;
+                button.HorizontalAlignment = HorizontalAlignment.Left;
                 button.Visibility = Visibility.Visible;
-                //button.Name = "OE";
+                button.Name = "Oe";
                 button.Content = item.strPlayer;
                 button.Click += ShowPlayer_Click;
                 Grid.SetRow(button, row);
-                Grid.SetColumn(button, 1);
+                Grid.SetColumn(button, 2);
                 Grid.Children.Add(button);
 
                 //-------------------------------------------------------------------------------------------------------

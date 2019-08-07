@@ -22,6 +22,7 @@ namespace SportsApiApp
     public partial class MainWindow : Window
     {
         TeamsList teams = new TeamsList();
+        PlayersList players = new PlayersList();
         public MainWindow()
         {
             InitializeComponent();
@@ -204,8 +205,8 @@ namespace SportsApiApp
             }
             else
             {
-                await LoadPlayers.GetAllPlayersAsync(TeamPlayers.Text, action);
-                if (LoadPlayers.allPlayers.Player == null)
+                players = await LoadPlayers.GetAllPlayersAsync(TeamPlayers.Text, action);
+                if (players.Player == null)
                 {
                     MessageBox.Show("Team Does not Exist on API");
                 }
@@ -224,7 +225,7 @@ namespace SportsApiApp
             int playerImgCol = 3; // center column
             int positionCol = 4;
 
-            foreach (var item in LoadPlayers.allPlayers.Player)
+            foreach (var item in players.Player)
             {
 
                 if (item.strThumb == null || item.strThumb == "")
@@ -299,8 +300,8 @@ namespace SportsApiApp
             }
             else
             {
-                await LoadPlayers.GetAllPlayersAsync(PlayerName.Text, action);
-                if (LoadPlayers.allPlayers.Player == null)
+                players = await LoadPlayers.GetAllPlayersAsync(PlayerName.Text, action);
+                if (players.Player == null)
                 {
                     MessageBox.Show("Player Does not Exist on API");
                 }
@@ -320,7 +321,7 @@ namespace SportsApiApp
             int moreInfoCol = 3;
             int descriptionCol = 4;
 
-            foreach (var item in LoadPlayers.allPlayers.Player)
+            foreach (var item in players.Player)
             {
 
                 if (item.strThumb == null || item.strThumb == "")

@@ -42,9 +42,9 @@ namespace Tests
 
             string team = "Everton";
 
-            await LoadPlayers.GetAllPlayersAsync(team, action);
+            PlayersList players = await LoadPlayers.GetAllPlayersAsync(team, action);
 
-            Assert.NotNull(LoadPlayers.allPlayers.Player);
+            Assert.NotNull(players.Player);
 
         }
 

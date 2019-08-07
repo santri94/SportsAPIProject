@@ -258,6 +258,22 @@ namespace SportsApiApp
                 Grid.SetColumnSpan(info, 2);
                 Grid.Children.Add(info);
                 //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Button
+                //-------------------------------------------------------------------------------------------------------
+                Button button = new Button();
+                button.Height = 30;
+                button.Width = 100;
+                button.VerticalAlignment = VerticalAlignment.Bottom;
+                button.HorizontalAlignment = HorizontalAlignment.Right;
+                button.Visibility = Visibility.Visible;
+                //button.Name = "OE";
+                button.Content = item.strPlayer;
+                button.Click += ShowPlayer_Click;
+                Grid.SetRow(button, row);
+                Grid.SetColumn(button, 1);
+                Grid.Children.Add(button);
+
+                //-------------------------------------------------------------------------------------------------------
 
                 //-------------------------------------------------------------------------------------------------------
                 //                                      Adding Image     
@@ -274,6 +290,11 @@ namespace SportsApiApp
                 row++;
             }
 
+        }
+
+        void ShowPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"Now Show player : {sender.ToString().Remove(0,32)}");
         }
 
         private async void SearchPlayerByName_Click(object sender, RoutedEventArgs e)

@@ -19,6 +19,8 @@ namespace SportsApiApp
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// images : https://wallpaperplay.com/board/cool-soccer-wallpapers
+    /// images : https://www.konfest.com/product/free-png-ball-6/
+    /// API: https://www.thesportsdb.com/api.php
     public partial class MainWindow : Window
     {
         TeamsList teams = new TeamsList();
@@ -140,13 +142,20 @@ namespace SportsApiApp
             else
             {
                 EmptyGrid();
-                DisplayEvents();
+                DisplayEvents(choosedTeam);
             }
         }
 
-        private void DisplayEvents()
+        private void DisplayEvents(string chooseTeam)
         {
             int row = 0;
+
+            //            Player player = new Player();
+            //player = players.Player.Where(x => x.strPlayer == playerName).ToList()[0];
+            Team team = new Team();
+            team = teams.Teams.Where(x => x.idTeam == chooseTeam).ToList()[0];
+
+            Logo.Source = new BitmapImage(new Uri(team.strTeamJersey));
 
             foreach (var item in events.Events)
             {
@@ -232,6 +241,7 @@ namespace SportsApiApp
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            Logo.Source = new BitmapImage(new Uri("C:\\Sports Project API\\SportsApiApp\\logo.png")); // empty image logo in recent search
             RecentSearch.Text = Team.Text;
             if (RecentSearch.Text.Length > 12)
             {
@@ -291,6 +301,7 @@ namespace SportsApiApp
 
         private async void ShowPlayers_Click(object sender, RoutedEventArgs e)
         {
+            Logo.Source = new BitmapImage(new Uri("C:\\Sports Project API\\SportsApiApp\\logo.png"));
             RecentSearch.Text = TeamPlayers.Text;
             if (RecentSearch.Text.Length > 12)
             {

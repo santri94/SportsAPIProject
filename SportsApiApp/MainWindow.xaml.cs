@@ -23,6 +23,7 @@ namespace SportsApiApp
     {
         TeamsList teams = new TeamsList();
         PlayersList players = new PlayersList();
+        EventsList events = new EventsList();
         public MainWindow()
         {
             InitializeComponent();
@@ -81,20 +82,21 @@ namespace SportsApiApp
                 Grid.Children.Add(info);
                 //-------------------------------------------------------------------------------------------------------
                 //-------------------------------------------------------------------------------------------------------
-                //                                      Adding Website
+                //                                      Adding Button
                 //-------------------------------------------------------------------------------------------------------
-                TextBlock site = new TextBlock();
-                site.Text = item.strWebsite;
-                site.FontSize = 20;
-                site.VerticalAlignment = VerticalAlignment.Center;
-                site.HorizontalAlignment = HorizontalAlignment.Left;
-                site.Foreground = System.Windows.Media.Brushes.White;
-                site.FontWeight = System.Windows.FontWeights.Bold;
-                site.FontStyle = System.Windows.FontStyles.Italic;
+                Button button = new Button();
+                button.Height = 30;
+                button.Width = 150;
+                button.VerticalAlignment = VerticalAlignment.Center;
+                button.HorizontalAlignment = HorizontalAlignment.Left;
+                button.Visibility = Visibility.Visible;
+                button.Name = "O"+item.idTeam;
+                button.Content = "Show Next 5 Games";
+                button.Click += ShowGames_Click;
+                Grid.SetRow(button, row);
+                Grid.SetColumn(button, 4);
+                Grid.Children.Add(button);
 
-                Grid.SetRow(site, row);
-                Grid.SetColumn(site, siteCol);
-                Grid.Children.Add(site);
                 //-------------------------------------------------------------------------------------------------------
 
                 //-------------------------------------------------------------------------------------------------------
@@ -121,6 +123,111 @@ namespace SportsApiApp
                 row++;
                 //-------------------------------------------------------------------------------------------------------
             }
+        }
+
+        private async void ShowGames_Click(object sender, RoutedEventArgs e)
+        {
+            
+            string choosedTeam = ((System.Windows.FrameworkElement)sender).Name.Trim('O');
+
+            //Send request
+            string action = "eventsnext.php?id=";
+            events = await LoadEvents.GetAllEventsAsync(choosedTeam, action);
+            if (events.Events == null)
+            {
+                MessageBox.Show("No Games To Show");
+            }
+            else
+            {
+                EmptyGrid();
+                DisplayEvents();
+            }
+        }
+
+        private void DisplayEvents()
+        {
+            int row = 0;
+
+            foreach (var item in events.Events)
+            {
+                RowDefinition x = new RowDefinition();
+                Grid.RowDefinitions.Add(x);
+                x.Height = new GridLength(50);
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding Name
+                //-------------------------------------------------------------------------------------------------------
+                TextBlock info = new TextBlock();
+                info.Text = item.strEvent;
+                info.FontSize = 30;
+                info.VerticalAlignment = VerticalAlignment.Center;
+                info.HorizontalAlignment = HorizontalAlignment.Center;
+                info.Foreground = System.Windows.Media.Brushes.PaleVioletRed;
+                info.FontWeight = System.Windows.FontWeights.Bold;
+                info.FontStyle = System.Windows.FontStyles.Italic;
+                info.TextDecorations = TextDecorations.Underline;
+
+                Grid.SetRow(info, row);
+                Grid.SetColumn(info, 1);
+                Grid.SetColumnSpan(info, 4);
+                Grid.Children.Add(info);
+                //-------------------------------------------------------------------------------------------------------
+                row++;
+                //-------------------------------------------------------------------------------------------------------
+                RowDefinition y = new RowDefinition();
+                Grid.RowDefinitions.Add(y);
+                y.Height = new GridLength(100);
+                //-------------------------------------------------------------------------------------------------------
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding More Info
+                //-------------------------------------------------------------------------------------------------------
+                TextBlock league = new TextBlock();
+                league.Text = item.strLeague;
+                league.FontSize = 25;
+                league.VerticalAlignment = VerticalAlignment.Center;
+                league.HorizontalAlignment = HorizontalAlignment.Center;
+                league.Foreground = System.Windows.Media.Brushes.White;
+                league.FontWeight = System.Windows.FontWeights.Bold;
+                league.FontStyle = System.Windows.FontStyles.Italic;
+
+                Grid.SetRow(league, row);
+                Grid.SetColumn(league, 1);
+                Grid.SetColumnSpan(league, 4);
+                Grid.Children.Add(league);
+
+                //-------------------------------------------------------------------------------------------------------
+                row++;
+                //-------------------------------------------------------------------------------------------------------
+                RowDefinition i = new RowDefinition();
+                Grid.RowDefinitions.Add(i);
+                i.Height = new GridLength(50);
+                //-------------------------------------------------------------------------------------------------------
+                //                                      Adding More Info
+                //-------------------------------------------------------------------------------------------------------
+                if (item.strDate == null)
+                {
+                    item.strDate = "Not Specified";
+                }
+                TextBlock time = new TextBlock();
+                time.Text = $"Date: {item.strDate} Time: {item.strTime}";
+                time.FontSize = 15;
+                time.VerticalAlignment = VerticalAlignment.Center;
+                time.HorizontalAlignment = HorizontalAlignment.Center;
+                time.Foreground = System.Windows.Media.Brushes.White;
+                time.FontWeight = System.Windows.FontWeights.Bold;
+                time.FontStyle = System.Windows.FontStyles.Italic;
+
+                Grid.SetRow(time, row);
+                Grid.SetColumn(time, 1);
+                Grid.SetColumnSpan(time, 4);
+                Grid.Children.Add(time);
+                //-------------------------------------------------------------------------------------------------------
+                row++;
+
+
+
+            }
+
+
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

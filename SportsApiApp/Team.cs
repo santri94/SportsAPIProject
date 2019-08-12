@@ -12,5 +12,6 @@ namespace SportsApiApp
         public string strTeamBadge { get; set; }
         public string strTeamJersey { get; set; }
         public string strWebsite { get; set; }
+        public string idTeam { get; set; }
     }
 }

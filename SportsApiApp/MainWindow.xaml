@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Sports App" Height="850" Width="950" WindowStartupLocation="CenterScreen">
     <Window.Background>
-        <ImageBrush ImageSource="C:\Sports Project API\SportsApiApp\bg.jpg" Opacity="0.6"/>
+        <ImageBrush ImageSource="C:\Sports Project API\SportsApiApp\bg1.jpg" Opacity="0.6"/>
     </Window.Background>
 
     <Grid Margin="199,0,0,0">
